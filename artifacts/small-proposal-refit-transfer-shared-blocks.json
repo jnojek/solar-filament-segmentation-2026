@@ -1,0 +1,526 @@
+{
+  "all_refit_mask_rles_preserved_and_disjoint": true,
+  "confirm": {
+    "bootstrap": {
+      "95pct_interval": [
+        0.0036374600916479817,
+        0.01860426103153413
+      ],
+      "groups": 18,
+      "repetitions": 2000
+    },
+    "delta": {
+      "original_verifier": 0.018024817126956527,
+      "refit": 0.010699739484991588
+    },
+    "gates": {
+      "beat_stronger_parent_by_0.005": true,
+      "fewer_complete_misses": true,
+      "new_matches": true,
+      "no_new_meaningful_merges": true,
+      "no_slice_matches_lost": true,
+      "zero_overlap_fp_cost": true
+    },
+    "map_digests": {
+      "original_verifier": "bfded4959197bde37ea70c0264432c3c016777e3eff1cfac734cb9f451e333c0",
+      "refit": "45790ee9a4d8eca88f689b502fbc5aae169c1ba6fc63f1b7ac45558ff5a70a76"
+    },
+    "metrics": {
+      "combined": {
+        "annotator_views": 127,
+        "any_overlap_merges": 6,
+        "any_overlap_splits": 82,
+        "complete_misses": 252,
+        "fn": 428,
+        "fp": 461,
+        "iou_sum": 280.62560456991196,
+        "lost_matches_vs_refit": 0,
+        "meaningful_merges": 4,
+        "meaningful_splits": 78,
+        "new_matches_vs_refit": 20,
+        "new_merges_vs_refit": 0,
+        "new_misses_vs_refit": 0,
+        "pq": 0.32536301979120225,
+        "pred_instances": 878,
+        "tp": 418,
+        "truth_instances": 846,
+        "unsupported_fp": 187
+      },
+      "original_verifier": {
+        "annotator_views": 127,
+        "any_overlap_merges": 7,
+        "any_overlap_splits": 98,
+        "complete_misses": 262,
+        "fn": 454,
+        "fp": 484,
+        "iou_sum": 264.61819249391556,
+        "lost_matches_vs_refit": 57,
+        "meaningful_merges": 5,
+        "meaningful_splits": 91,
+        "new_matches_vs_refit": 51,
+        "new_merges_vs_refit": 3,
+        "new_misses_vs_refit": 32,
+        "pq": 0.3073382026642457,
+        "pred_instances": 875,
+        "tp": 392,
+        "truth_instances": 846,
+        "unsupported_fp": 181
+      },
+      "refit": {
+        "annotator_views": 127,
+        "any_overlap_merges": 6,
+        "any_overlap_splits": 80,
+        "complete_misses": 275,
+        "fn": 448,
+        "fp": 454,
+        "iou_sum": 267.14912497997284,
+        "lost_matches_vs_refit": 0,
+        "meaningful_merges": 4,
+        "meaningful_splits": 76,
+        "new_matches_vs_refit": 0,
+        "new_merges_vs_refit": 0,
+        "new_misses_vs_refit": 0,
+        "pq": 0.31466328030621066,
+        "pred_instances": 851,
+        "tp": 398,
+        "truth_instances": 846,
+        "unsupported_fp": 185
+      }
+    },
+    "physical": {
+      "added_masks": 16,
+      "combined_masks": 541,
+      "disks_with_additions": 15,
+      "original_verifier_masks": 548,
+      "refit_masks": 525
+    },
+    "slices": {
+      "faint": {
+        "combined": {
+          "complete_misses": 82,
+          "matched": 59,
+          "truth_instances": 221
+        },
+        "original_verifier": {
+          "complete_misses": 83,
+          "matched": 49,
+          "truth_instances": 221
+        },
+        "refit": {
+          "complete_misses": 83,
+          "matched": 59,
+          "truth_instances": 221
+        }
+      },
+      "faint&near_limb": {
+        "combined": {
+          "complete_misses": 17,
+          "matched": 27,
+          "truth_instances": 58
+        },
+        "original_verifier": {
+          "complete_misses": 12,
+          "matched": 27,
+          "truth_instances": 58
+        },
+        "refit": {
+          "complete_misses": 17,
+          "matched": 27,
+          "truth_instances": 58
+        }
+      },
+      "near_limb": {
+        "combined": {
+          "complete_misses": 30,
+          "matched": 60,
+          "truth_instances": 107
+        },
+        "original_verifier": {
+          "complete_misses": 24,
+          "matched": 61,
+          "truth_instances": 107
+        },
+        "refit": {
+          "complete_misses": 30,
+          "matched": 60,
+          "truth_instances": 107
+        }
+      },
+      "thin": {
+        "combined": {
+          "complete_misses": 101,
+          "matched": 73,
+          "truth_instances": 209
+        },
+        "original_verifier": {
+          "complete_misses": 101,
+          "matched": 67,
+          "truth_instances": 209
+        },
+        "refit": {
+          "complete_misses": 114,
+          "matched": 62,
+          "truth_instances": 209
+        }
+      },
+      "thin&faint": {
+        "combined": {
+          "complete_misses": 24,
+          "matched": 7,
+          "truth_instances": 38
+        },
+        "original_verifier": {
+          "complete_misses": 22,
+          "matched": 7,
+          "truth_instances": 38
+        },
+        "refit": {
+          "complete_misses": 25,
+          "matched": 7,
+          "truth_instances": 38
+        }
+      },
+      "thin&faint&near_limb": {
+        "combined": {
+          "complete_misses": 2,
+          "matched": 1,
+          "truth_instances": 3
+        },
+        "original_verifier": {
+          "complete_misses": 1,
+          "matched": 1,
+          "truth_instances": 3
+        },
+        "refit": {
+          "complete_misses": 2,
+          "matched": 1,
+          "truth_instances": 3
+        }
+      },
+      "thin&near_limb": {
+        "combined": {
+          "complete_misses": 6,
+          "matched": 4,
+          "truth_instances": 12
+        },
+        "original_verifier": {
+          "complete_misses": 5,
+          "matched": 4,
+          "truth_instances": 12
+        },
+        "refit": {
+          "complete_misses": 6,
+          "matched": 4,
+          "truth_instances": 12
+        }
+      }
+    },
+    "stronger_parent": "refit"
+  },
+  "elapsed_seconds": 28.970587200004957,
+  "evaluation_status": "Exposed confirmation and Udaipur; frozen models and no transfer tuning.",
+  "identity": {
+    "refit_checkpoint": "f4f24f591a4386237ef04c278fe8e8e8a1761a0ef79576c1e7aab74fadca18ce",
+    "refit_config": "8f7b53fe4e1954201f517c0420623a570aaa9e9def4f02e9c9476d4e8e51c4ff",
+    "split": "8f3a282eb182b1d2c5c786de54466e7d9fa03c4c48911570d5a5d2d1a684135a",
+    "verifier": "13812ae80da15cec8dac945b29e92f4f893776e44ac18e47b91051a4057e001b"
+  },
+  "pooled": {
+    "bootstrap": {
+      "95pct_interval": [
+        0.006404556933699271,
+        0.013974963876293819
+      ],
+      "groups": 68,
+      "repetitions": 2000
+    },
+    "delta": {
+      "original_verifier": 0.010705069660045252,
+      "refit": 0.01008999606331884
+    },
+    "gates": {
+      "beat_stronger_parent_by_0.005": true,
+      "paired_lower_bound_positive": true
+    },
+    "metrics": {
+      "combined": {
+        "annotator_views": 292,
+        "any_overlap_merges": 15,
+        "any_overlap_splits": 171,
+        "complete_misses": 506,
+        "fn": 911,
+        "fp": 1036,
+        "iou_sum": 670.6670607924461,
+        "lost_matches_vs_refit": 0,
+        "meaningful_merges": 13,
+        "meaningful_splits": 157,
+        "new_matches_vs_refit": 48,
+        "new_merges_vs_refit": 0,
+        "new_misses_vs_refit": 0,
+        "pq": 0.33983636219531094,
+        "pred_instances": 2035,
+        "tp": 1000,
+        "truth_instances": 1911,
+        "unsupported_fp": 429
+      },
+      "original_verifier": {
+        "annotator_views": 292,
+        "any_overlap_merges": 14,
+        "any_overlap_splits": 185,
+        "complete_misses": 519,
+        "fn": 940,
+        "fp": 1094,
+        "iou_sum": 654.3130095601082,
+        "lost_matches_vs_refit": 98,
+        "meaningful_merges": 11,
+        "meaningful_splits": 166,
+        "new_matches_vs_refit": 117,
+        "new_merges_vs_refit": 4,
+        "new_misses_vs_refit": 64,
+        "pq": 0.3291312925352657,
+        "pred_instances": 2064,
+        "tp": 971,
+        "truth_instances": 1911,
+        "unsupported_fp": 464
+      },
+      "refit": {
+        "annotator_views": 292,
+        "any_overlap_merges": 15,
+        "any_overlap_splits": 166,
+        "complete_misses": 564,
+        "fn": 959,
+        "fp": 1010,
+        "iou_sum": 638.5538380146027,
+        "lost_matches_vs_refit": 0,
+        "meaningful_merges": 13,
+        "meaningful_splits": 152,
+        "new_matches_vs_refit": 0,
+        "new_merges_vs_refit": 0,
+        "new_misses_vs_refit": 0,
+        "pq": 0.3297463661319921,
+        "pred_instances": 1961,
+        "tp": 952,
+        "truth_instances": 1911,
+        "unsupported_fp": 420
+      }
+    },
+    "stronger_parent": "refit"
+  },
+  "site_holdout": {
+    "bootstrap": {
+      "95pct_interval": [
+        -0.0067930590134491625,
+        0.017962376228789007
+      ],
+      "groups": 57,
+      "repetitions": 2000
+    },
+    "delta": {
+      "original_verifier": 0.005291746088566585,
+      "refit": 0.009550842637807644
+    },
+    "gates": {
+      "beat_stronger_parent_by_0.005": true,
+      "fewer_complete_misses": true,
+      "new_matches": true,
+      "no_new_meaningful_merges": true,
+      "no_slice_matches_lost": true,
+      "zero_overlap_fp_cost": true
+    },
+    "map_digests": {
+      "original_verifier": "540d9b11b530e3c08d5217f07b42b62b87271f0fc52617d909e18835ac7f0544",
+      "refit": "72ecc88eef774290ef1eb99ccc90a5dfdeb6d9369d041eec25ed71cb719d1bed"
+    },
+    "metrics": {
+      "combined": {
+        "annotator_views": 165,
+        "any_overlap_merges": 9,
+        "any_overlap_splits": 89,
+        "complete_misses": 254,
+        "fn": 483,
+        "fp": 575,
+        "iou_sum": 390.0414562225342,
+        "lost_matches_vs_refit": 0,
+        "meaningful_merges": 9,
+        "meaningful_splits": 79,
+        "new_matches_vs_refit": 28,
+        "new_merges_vs_refit": 0,
+        "new_misses_vs_refit": 0,
+        "pq": 0.35107241784206494,
+        "pred_instances": 1157,
+        "tp": 582,
+        "truth_instances": 1065,
+        "unsupported_fp": 242
+      },
+      "original_verifier": {
+        "annotator_views": 165,
+        "any_overlap_merges": 7,
+        "any_overlap_splits": 87,
+        "complete_misses": 257,
+        "fn": 486,
+        "fp": 610,
+        "iou_sum": 389.6948170661926,
+        "lost_matches_vs_refit": 41,
+        "meaningful_merges": 6,
+        "meaningful_splits": 75,
+        "new_matches_vs_refit": 66,
+        "new_merges_vs_refit": 1,
+        "new_misses_vs_refit": 32,
+        "pq": 0.34578067175349836,
+        "pred_instances": 1189,
+        "tp": 579,
+        "truth_instances": 1065,
+        "unsupported_fp": 283
+      },
+      "refit": {
+        "annotator_views": 165,
+        "any_overlap_merges": 9,
+        "any_overlap_splits": 86,
+        "complete_misses": 289,
+        "fn": 511,
+        "fp": 556,
+        "iou_sum": 371.4047130346298,
+        "lost_matches_vs_refit": 0,
+        "meaningful_merges": 9,
+        "meaningful_splits": 76,
+        "new_matches_vs_refit": 0,
+        "new_merges_vs_refit": 0,
+        "new_misses_vs_refit": 0,
+        "pq": 0.3415215752042573,
+        "pred_instances": 1110,
+        "tp": 554,
+        "truth_instances": 1065,
+        "unsupported_fp": 235
+      }
+    },
+    "physical": {
+      "added_masks": 28,
+      "combined_masks": 699,
+      "disks_with_additions": 25,
+      "original_verifier_masks": 717,
+      "refit_masks": 671
+    },
+    "slices": {
+      "faint": {
+        "combined": {
+          "complete_misses": 79,
+          "matched": 71,
+          "truth_instances": 246
+        },
+        "original_verifier": {
+          "complete_misses": 79,
+          "matched": 68,
+          "truth_instances": 246
+        },
+        "refit": {
+          "complete_misses": 80,
+          "matched": 71,
+          "truth_instances": 246
+        }
+      },
+      "faint&near_limb": {
+        "combined": {
+          "complete_misses": 23,
+          "matched": 33,
+          "truth_instances": 81
+        },
+        "original_verifier": {
+          "complete_misses": 16,
+          "matched": 35,
+          "truth_instances": 81
+        },
+        "refit": {
+          "complete_misses": 23,
+          "matched": 33,
+          "truth_instances": 81
+        }
+      },
+      "near_limb": {
+        "combined": {
+          "complete_misses": 40,
+          "matched": 78,
+          "truth_instances": 154
+        },
+        "original_verifier": {
+          "complete_misses": 33,
+          "matched": 83,
+          "truth_instances": 154
+        },
+        "refit": {
+          "complete_misses": 40,
+          "matched": 78,
+          "truth_instances": 154
+        }
+      },
+      "thin": {
+        "combined": {
+          "complete_misses": 100,
+          "matched": 83,
+          "truth_instances": 242
+        },
+        "original_verifier": {
+          "complete_misses": 104,
+          "matched": 87,
+          "truth_instances": 242
+        },
+        "refit": {
+          "complete_misses": 113,
+          "matched": 73,
+          "truth_instances": 242
+        }
+      },
+      "thin&faint": {
+        "combined": {
+          "complete_misses": 25,
+          "matched": 4,
+          "truth_instances": 43
+        },
+        "original_verifier": {
+          "complete_misses": 27,
+          "matched": 4,
+          "truth_instances": 43
+        },
+        "refit": {
+          "complete_misses": 25,
+          "matched": 4,
+          "truth_instances": 43
+        }
+      },
+      "thin&faint&near_limb": {
+        "combined": {
+          "complete_misses": 3,
+          "matched": 2,
+          "truth_instances": 7
+        },
+        "original_verifier": {
+          "complete_misses": 3,
+          "matched": 1,
+          "truth_instances": 7
+        },
+        "refit": {
+          "complete_misses": 3,
+          "matched": 2,
+          "truth_instances": 7
+        }
+      },
+      "thin&near_limb": {
+        "combined": {
+          "complete_misses": 11,
+          "matched": 4,
+          "truth_instances": 21
+        },
+        "original_verifier": {
+          "complete_misses": 10,
+          "matched": 4,
+          "truth_instances": 21
+        },
+        "refit": {
+          "complete_misses": 11,
+          "matched": 4,
+          "truth_instances": 21
+        }
+      }
+    },
+    "stronger_parent": "original_verifier"
+  }
+}

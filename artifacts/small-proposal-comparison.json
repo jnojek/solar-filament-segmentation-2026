@@ -1,0 +1,169 @@
+{
+  "base_min_area": 700,
+  "base_threshold": 0.65,
+  "elapsed_seconds": 19.96467090000806,
+  "evaluation": {
+    "confirm": {
+      "added_meaningful_merges": 0,
+      "added_meaningful_splits": 4,
+      "additional_zero_overlap_fp": 4,
+      "delta_pq": 0.014202855416838855,
+      "metrics": {
+        "all_small": {
+          "annotator_views": 127,
+          "any_overlap_merges": 7,
+          "any_overlap_splits": 186,
+          "complete_misses": 39,
+          "fn": 319,
+          "fp": 1333,
+          "iou_sum": 351.4992325901985,
+          "meaningful_merges": 5,
+          "meaningful_splits": 153,
+          "new_truth_matches": 161,
+          "pq": 0.25979248528469956,
+          "pred_instances": 1859,
+          "tp": 527,
+          "truth_instances": 846,
+          "unsupported_fp": 779
+        },
+        "baseline": {
+          "annotator_views": 127,
+          "any_overlap_merges": 7,
+          "any_overlap_splits": 93,
+          "complete_misses": 289,
+          "fn": 480,
+          "fp": 472,
+          "iou_sum": 246.8199623823166,
+          "meaningful_merges": 5,
+          "meaningful_splits": 87,
+          "new_truth_matches": 0,
+          "pq": 0.29313534724740686,
+          "pred_instances": 837,
+          "tp": 366,
+          "truth_instances": 846,
+          "unsupported_fp": 177
+        },
+        "verifier": {
+          "annotator_views": 127,
+          "any_overlap_merges": 7,
+          "any_overlap_splits": 98,
+          "complete_misses": 262,
+          "fn": 454,
+          "fp": 484,
+          "iou_sum": 264.61819249391556,
+          "meaningful_merges": 5,
+          "meaningful_splits": 91,
+          "new_truth_matches": 26,
+          "pq": 0.3073382026642457,
+          "pred_instances": 875,
+          "tp": 392,
+          "truth_instances": 846,
+          "unsupported_fp": 181
+        }
+      },
+      "observations": 80,
+      "paired_group_bootstrap": {
+        "95pct_interval": [
+          0.007183623237885029,
+          0.022075984298683234
+        ],
+        "groups": 18,
+        "repetitions": 2000
+      },
+      "physical": {
+        "baseline_instances": 526,
+        "rescued_instances": 22,
+        "small_proposals": 635
+      }
+    },
+    "site_holdout": {
+      "added_meaningful_merges": 0,
+      "added_meaningful_splits": 5,
+      "additional_zero_overlap_fp": 9,
+      "delta_pq": 0.00723947266659275,
+      "metrics": {
+        "all_small": {
+          "annotator_views": 165,
+          "any_overlap_merges": 9,
+          "any_overlap_splits": 175,
+          "complete_misses": 44,
+          "fn": 358,
+          "fp": 1539,
+          "iou_sum": 473.1851173043251,
+          "meaningful_merges": 6,
+          "meaningful_splits": 132,
+          "new_truth_matches": 154,
+          "pq": 0.2858261052880248,
+          "pred_instances": 2246,
+          "tp": 707,
+          "truth_instances": 1065,
+          "unsupported_fp": 989
+        },
+        "baseline": {
+          "annotator_views": 165,
+          "any_overlap_merges": 7,
+          "any_overlap_splits": 80,
+          "complete_misses": 291,
+          "fn": 512,
+          "fp": 584,
+          "iou_sum": 372.7338601946831,
+          "meaningful_merges": 6,
+          "meaningful_splits": 70,
+          "new_truth_matches": 0,
+          "pq": 0.3385411990869056,
+          "pred_instances": 1137,
+          "tp": 553,
+          "truth_instances": 1065,
+          "unsupported_fp": 274
+        },
+        "verifier": {
+          "annotator_views": 165,
+          "any_overlap_merges": 7,
+          "any_overlap_splits": 87,
+          "complete_misses": 257,
+          "fn": 486,
+          "fp": 610,
+          "iou_sum": 389.6948170661926,
+          "meaningful_merges": 6,
+          "meaningful_splits": 75,
+          "new_truth_matches": 26,
+          "pq": 0.34578067175349836,
+          "pred_instances": 1189,
+          "tp": 579,
+          "truth_instances": 1065,
+          "unsupported_fp": 283
+        }
+      },
+      "observations": 101,
+      "paired_group_bootstrap": {
+        "95pct_interval": [
+          0.0033897273242991756,
+          0.011583792781626434
+        ],
+        "groups": 57,
+        "repetitions": 2000
+      },
+      "physical": {
+        "baseline_instances": 688,
+        "rescued_instances": 29,
+        "small_proposals": 671
+      }
+    }
+  },
+  "evaluation_status": "Frozen baseline model never trained on verifier fit or evaluation images. Verifier fit on development only. Confirmation and Udaipur were previously exposed in other experiments.",
+  "fit_mean_target": 0.1723413198823035,
+  "fit_proposals_any_positive_view": 174,
+  "gates": {
+    "confirmation_added_merges_under_half_percent": true,
+    "confirmation_added_unsupported_under_one_percent": true,
+    "confirmation_at_least_five_new_matches": true,
+    "confirmation_delta_at_least_0.005": true,
+    "site_delta_above_minus_0.005": true
+  },
+  "nearest_verifier_fit_to_evaluation_hours": 50.74444444444445,
+  "proposal_min_area": 150,
+  "split_sha256": "f760370a6694a1f5291f50d86c8cad934d82b2dfd4c91cb9ed9400d936f7cfb1",
+  "verifier_fit_observations": 115,
+  "verifier_fit_proposals": 793,
+  "verifier_sha256": "13812ae80da15cec8dac945b29e92f4f893776e44ac18e47b91051a4057e001b"
+}

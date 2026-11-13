@@ -1,13 +1,10 @@
 # Release checks
 
-- [x] Exact checkpoint and model settings frozen; baseline and challenger compared on the same development observations.
-- [x] Decision locked before independent confirmation; Udaipur treated as a separate transfer set.
-- [x] Organizer notebook parity established on fixtures and real model predictions.
-- [x] Independent split and near-copy checks passed.
-- [x] Official test inventory of 180 images fully processed from verified input bytes.
-- [x] Per-instance compressed RLE decodes to the original native placement and dimensions.
-- [x] Empty images are listed in the coverage receipt; no placeholder instance is emitted.
-- [x] Final CSV below 10 MB; exact SHA-256 agrees in all receipts and clean notebook run.
-- [x] Final four-page official-template PDF renders cleanly and stays below 10 MB.
-- [x] Public Git package excludes restricted data and has pinned dependencies, original source, and approved weights.
-- [ ] Owner reviews author attribution and separately authorizes or performs Kaggle upload, final selection, public sharing, and form submission.
+- [x] The 419-image checkpoint and verifier are frozen and tied to the exact export.
+- [x] The frozen transfer was compared with both parent methods on the same previously evaluated groups.
+- [x] Independent scoring, all 180 official test image hashes, native RLE and empty-image checks passed.
+- [x] A fresh notebook process reproduced the exact CSV and coverage hashes.
+- [x] The pre-submission four-page report rendered and passed visual review.
+- [x] Pinned dependencies, original source, fitted weights, and a fresh notebook are in the release.
+- [ ] Reconcile the official submission reference and score, then update the report to match if selected.
+- [ ] Verify the single Kaggle final selection, published Git revision and associated Kaggle notebook, and organizer form confirmation.

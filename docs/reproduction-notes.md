@@ -1,41 +1,14 @@
-# Reproduction notes
+# Reproducing the combined refit and verifier
 
-Run from the repository root using Python 3.12.11. For the measured Windows CUDA reproduction, install the pinned environment using uv:
-
-```powershell
-uv venv --python 3.12.11
-uv pip sync --python .venv\Scripts\python.exe --extra-index-url https://download.pytorch.org/whl/cu128 requirements-windows.lock
-uv pip check --python .venv\Scripts\python.exe
-$env:PATH = "$((Resolve-Path .venv\Scripts).Path);$env:PATH"
-$env:PYTHONPATH = (Resolve-Path src).Path
-$env:OMP_NUM_THREADS = '1'
-$env:MKL_NUM_THREADS = '1'
-```
-
-Create a fresh output directory or use the notebook, which creates one. An independently decoded CSV must match the release hash to reproduce the exact submission. CPU or different CUDA/library versions can produce valid output that differs near a threshold; the exact-byte claim is bounded to the measured environment.
-
-With the official raw archive unpacked to `data/MAGFiLO_1.0_Kaggle_2026`, use the included checkpoint and selected config listed in `artifacts/release.json`. The notebook invokes the same CLI and supplies the full input and artifact identities. To run it without opening a browser:
+Obtain the competition archive with official Kaggle tooling and place it at `data/MAGFiLO_1.0_Kaggle_2026/`. Install `requirements.txt` in Python 3.12 with the matching CUDA 12.8 PyTorch build. From the checkout root, execute every cell in `reproduce.ipynb`. For the direct Windows equivalent:
 
 ```powershell
-.\.venv\Scripts\python.exe -m nbconvert --to notebook --execute reproduce.ipynb --output reproduced.ipynb --output-dir output
+$env:PYTHONPATH = 'src'
+$data = 'data/MAGFiLO_1.0_Kaggle_2026'
+python -m filament.small_proposal --config artifacts/selected.json --checkpoint artifacts/model.pt --verifier artifacts/small-proposal-selected.json --images "$data/test/test_images" --inventory artifacts/test-files.sha256.json --output output/refit-verifier/submission.csv --coverage output/refit-verifier/coverage.json --receipt output/refit-verifier/inference.json --device cuda
+python qa/verify_entry.py export --csv output/refit-verifier/submission.csv --coverage output/refit-verifier/coverage.json --images "$data/test/test_images" --inventory artifacts/test-files.sha256.json --output output/refit-verifier/qa.json
 ```
 
-The experimental training recipe is independent of that frozen checkpoint:
+Compare the CSV and coverage SHA-256 with `artifacts/release.json`. The frozen checkpoint and verifier are included. The [training lineage](refit-verifier-transfer.md) describes independent retraining of the 419-image network and refitting the verifier from the 336-image model's out-of-training maps.
 
-```powershell
-.\.venv\Scripts\python.exe -m filament train --data data/MAGFiLO_1.0_Kaggle_2026 --split artifacts/split.json --config configs/baseline.json --output runs/retrain --device cuda
-```
-
-Training starts from random weights. The exact-byte check uses the included trained artifact rather than depending on kernel-level training determinism.
-
-The release does not include competition images, annotations or submission rows. The SHA-256 manifest verifies the same original data can be obtained from the competition.
-
-Run the selected inference path directly:
-
-```powershell
-New-Item -ItemType Directory -Force output/cli-reproduction | Out-Null
-.\.venv\Scripts\python.exe -m filament infer --config artifacts/selected.json --checkpoint artifacts/model.pt --images data/MAGFiLO_1.0_Kaggle_2026/test/test_images --output output/cli-reproduction/submission.csv --coverage output/cli-reproduction/coverage.json --receipt output/cli-reproduction/inference.json --device cuda
-.\.venv\Scripts\python.exe qa/verify_entry.py export --csv output/cli-reproduction/submission.csv --coverage output/cli-reproduction/coverage.json --images data/MAGFiLO_1.0_Kaggle_2026/test/test_images --inventory artifacts/test-files.sha256.json
-```
-
-Report source is supplied for transparency. The organizer-facing PDF includes a local qualitative plate from competition validation data. To rebuild that plate, regenerate the matched confirmation overlays and run `scripts/report_examples.py` from the repo root. The repository deliberately omits the image pixels and original annotations.
+The report in `report/`, if present, documents the original baseline experiment. The organizer-facing combined report is a separate four-page PDF, and its exact submission identity is recorded in the handoff materials.

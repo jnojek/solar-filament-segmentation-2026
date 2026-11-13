@@ -1,11 +1,27 @@
 {
   "artifact_sha256": {
+    "LICENSE": "76e666800a8c59b17152a00beb1b1cdbeb06897ec485417aad5ba02308868c03",
+    "README.md": "8c3096c90c96c6d8ad88ed3f7b96c96e5a89c4f5e1f05d6918119094dd5dabdf",
+    "analysis/compare.py": "047ef9a7b54ec506886c48ea7b16347c1eb5ab84e0b6e83cb4be60cfc562365d",
+    "analysis/diagnose.py": "d2d19328909d9f921da1b460bd48667548ae37111cea73f20ad4ac736399b169",
+    "analysis/score_refit_verifier_transfer.py": "b7e014eb7df63dfc95ee3fcf61bc1c768fed5a8bef2dbd7f61cc811524f60b02",
+    "analysis/small_proposal_verifier.py": "dfed915751dab161d33050955c8fa30be8390d6fd20bc64582ab6207d923005c",
     "artifacts/data-identity.json": "b3d057b752a0697f2a78cf587fa45ddb8ea8b42a18554992f8892c486d4bf028",
-    "artifacts/model.pt": "a4ab9442cbf9b5e3570d5eec04e626587280fe82efec2e43feaa5be7b4aa16e9",
-    "artifacts/selected.json": "154a5552e7b03091fd85fdb415156cd6c45e2993a5c0df52541adb33758bcbf2",
+    "artifacts/model.pt": "f4f24f591a4386237ef04c278fe8e8e8a1761a0ef79576c1e7aab74fadca18ce",
+    "artifacts/refit-config.json": "8f7b53fe4e1954201f517c0420623a570aaa9e9def4f02e9c9476d4e8e51c4ff",
+    "artifacts/refit-preflight.json": "88249b55a7bf3702a073ecd5918d3d6233aad641894e8b414b79fdaf33e805f6",
+    "artifacts/refit-split.json": "8f3a282eb182b1d2c5c786de54466e7d9fa03c4c48911570d5a5d2d1a684135a",
+    "artifacts/selected.json": "8f7b53fe4e1954201f517c0420623a570aaa9e9def4f02e9c9476d4e8e51c4ff",
+    "artifacts/small-proposal-comparison.json": "818f8698b3583a5e5235c49f7f148c5884d2a9f35aa203a5016881c5748a053b",
+    "artifacts/small-proposal-refit-transfer-shared-blocks.json": "840f3a76ce7f5252d7a32eb7ab4166a328bf11b60b2630ef0fee5d80226f2f1e",
+    "artifacts/small-proposal-refit-transfer.json": "19978f9e101d693be17b4df86f3e6dcf0e5825caf7164c41e7c2580fb4a8d59e",
+    "artifacts/small-proposal-selected.json": "13812ae80da15cec8dac945b29e92f4f893776e44ac18e47b91051a4057e001b",
     "artifacts/split.json": "f760370a6694a1f5291f50d86c8cad934d82b2dfd4c91cb9ed9400d936f7cfb1",
     "artifacts/test-files.sha256.json": "76ad238e60f87e9dd6a9b6e5c3495acf5289428fcdfe2a642337b7887078a6d8",
     "artifacts/train-files.sha256.json": "fcb008ee854c39ef4bcde87f27b8f5b2b2de9c924b90c1097801d4c09ba7c5d3",
+    "docs/refit-verifier-transfer.md": "fc80fa0bc5cbd95c81ba0750c721e740560583e98e836aa4ecabf8a79cfcbaa6",
+    "docs/reproduction-notes.md": "40c8641b4314faafb41d65ecaaebe3f6d7e44f53c7dbe4fc4600a1fd5ec27846",
+    "docs/small-proposal-verifier.md": "b0093462047e7aa3b9440b61e70e828c40154c68a7ee43766517beffa0025be9",
     "qa/verify_entry.py": "e8553cd995b53b40d1b3481926aab88e17c75862f36f892e81a8722b836f2e06",
     "requirements.txt": "b4db28cc752625975529e155c02ab3cfa6ddfc427f01ab80cc201d4c0a2e3a52",
     "src/filament/__init__.py": "4e5ebb514f29302f01ec80111aa10c89b583f89283b479e5ac619531c4f09348",
@@ -17,12 +33,15 @@
     "src/filament/infer.py": "f10f2006bf39ec61c93a34ac6e27ec68f99bc1fea36f6873eac9a52cbca54755",
     "src/filament/metrics.py": "d3f481643c263f09efeef1d1ecc984c370d3f6a9731efce3442a490064e2cc81",
     "src/filament/model.py": "e728a321be922ae08744bbada8556a24286f1075292e687c455fe6640723ece1",
-    "src/filament/train.py": "fdde4bd7c9d88795c0a2471d5561a23b2b42e10a1f4b39babf852ec11969786b"
+    "src/filament/morphology_filter.py": "ec21db65e36db0a5bde6becf96a665fe3eedcd9977db86cf71e671d070c503ee",
+    "src/filament/small_proposal.py": "0883dd8fe7d6bddbf6b296908ad0421eb265ceb18c88ce0dd9d99b1318c4a6f4",
+    "src/filament/train.py": "fdde4bd7c9d88795c0a2471d5561a23b2b42e10a1f4b39babf852ec11969786b",
+    "artifacts/small-proposal-refit-transfer-independent.json": "d3e96d974f4af4f3310de804e00987788c0d6a15f93a5009e8eff5fbbbc9eddb"
   },
-  "candidate": "baseline-native-unet",
+  "candidate": "419 refit with small-proposal verifier",
   "checkpoint": "artifacts/model.pt",
   "config": "artifacts/selected.json",
-  "coverage_sha256": "d57d94c107f6307eb9c99572ff6faf3f0f58bd3a055d6c76d804838641299bb7",
+  "coverage_sha256": "b4022ea8b1627edd9906e4a11b62cf81807096763d8345c4a384d6aecbd24288",
   "device": "cuda",
   "empty_observations": 3,
   "environment": {
@@ -34,12 +53,19 @@
   "inference": {
     "cuda_peak_allocated_bytes": 926613504,
     "cuda_peak_reserved_bytes": 1186988032,
-    "elapsed_seconds": 76.05,
-    "ram_peak_bytes": 1235197952
+    "elapsed_seconds": 64.751,
+    "ram_peak_bytes": 1250824192
   },
-  "instances": 1293,
+  "inference_arguments": [
+    "--verifier",
+    "artifacts/small-proposal-selected.json"
+  ],
+  "inference_module": "filament.small_proposal",
+  "instances": 1307,
   "observations": 180,
-  "submission_bytes": 324704,
-  "submission_sha256": "22f46dfefbc233ba1b5a033397f61225d7563af5c73b5d9c35628155e35536b4",
-  "test_manifest": "artifacts/test-files.sha256.json"
+  "submission_bytes": 335175,
+  "submission_sha256": "dfd4405897c125d3a84e8319f687cbde41f15d9ee3332947a1a30fa97e8a5577",
+  "test_manifest": "artifacts/test-files.sha256.json",
+  "validation_note": "See paired shared-date-block transfer receipt and docs. Earlier campaign models and evaluations informed experiment choice.",
+  "kaggle_submission_status": "not_submitted"
 }

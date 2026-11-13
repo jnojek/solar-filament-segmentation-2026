@@ -208,8 +208,11 @@ def slice_summary(slices):
     return result
 
 
-def run(args):
-    from filament.challenger import candidate_rles
+def run(args, *, candidate_provider=None):
+    if candidate_provider is None:
+        from filament.challenger import candidate_rles
+
+        candidate_provider = candidate_rles
     from filament.data import load_image, read_annotations, site, timestamp
     from filament.infer import instance_rles
 
@@ -224,7 +227,7 @@ def run(args):
         from filament.challenger import closing_rles
 
         methods["closing"] = partial(closing_rles, threshold=threshold, min_area=min_area, config=config)
-    methods["candidate"] = partial(candidate_rles, threshold=threshold, min_area=min_area, config=config)
+    methods["candidate"] = partial(candidate_provider, threshold=threshold, min_area=min_area, config=config)
     ids = split[args.partition]
     by_partition = defaultdict(Counter)
     by_site = defaultdict(lambda: defaultdict(Counter))
