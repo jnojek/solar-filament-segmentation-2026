@@ -1,0 +1,11 @@
+\subsection{Metric and diagnostics}
+We follow the organizer's published self-evaluation notebook. Every prediction set is compared separately with each annotator view of the same physical disk. A match requires instance IoU strictly above 0.5. We sum matched IoUs and pool counts over annotator views:
+\[
+ \mathrm{PQ}=\frac{\sum_{(p,t)\in\mathrm{TP}}\operatorname{IoU}(p,t)}
+ {|\mathrm{TP}|+0.5|\mathrm{FP}|+0.5|\mathrm{FN}|}.
+\]
+This is the organizer's implementation of the PQ approach \cite{kirillov2019panoptic}. Independent full-resolution fixtures verified perfect masks, misses, splits, merges, the strict threshold, and the notebook treatment of images with no predictions. We distinguish the organizer's any-overlap split and merge counts from diagnostic counts that require substantial overlap.
+
+Thin and faint cutoffs are fixed from development annotations before confirmation. Thin means median skeleton width at most 6.32 pixels. Faint means a local flank-normalized contrast at most 2.02. Near limb means median projected spine radius at least 0.8 times the fitted apparent disk radius. Those slices overlap. The annotation procedure omits some small, faint and near-limb cases, so conclusions apply to the available annotations.
+
+\input{results}

@@ -1,0 +1,99 @@
+\subsection{Matched results and selection}
+
+\begin{table}[h]\centering\small
+
+\caption{Matched instance scoring. Each result is pooled over independent views.}
+
+\begin{tabular}{llrrr}
+
+\toprule
+
+Partition & Method & PQ & FP & FN\\
+
+\midrule
+
+Development & Baseline & 0.3365 & 655 & 699\\
+
+Development & Contrast & 0.3466 & 524 & 719\\
+
+Confirmation & Baseline & 0.2931 & 472 & 480\\
+
+Confirmation & Contrast & 0.2978 & 405 & 492\\
+
+Udaipur & Baseline & 0.3385 & 584 & 512\\
+
+Udaipur & Contrast & 0.3500 & 476 & 525\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table}
+
+\begin{table}[h]\centering\small
+
+\caption{Diagnostic errors for baseline \(\rightarrow\) contrast.}
+
+\begin{tabular}{lrrrr}
+
+\toprule
+
+Partition & Splits & Merges & Zero overlap & New misses\\
+
+\midrule
+
+Development & 73\(\to\)67 & 12\(\to\)11 & 298\(\to\)189 & 37\\
+
+Confirmation & 87\(\to\)79 & 5\(\to\)5 & 177\(\to\)126 & 16\\
+
+Udaipur & 70\(\to\)61 & 6\(\to\)6 & 274\(\to\)188 & 27\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table}
+
+Development: 115 disks, 186 views, 1375 annotated instances; PQ change +0.0101; paired 95\% bootstrap interval [+0.0060, +0.0148].
+
+Confirmation: 80 disks, 127 views, 846 annotated instances; PQ change +0.0047; paired 95\% bootstrap interval [-0.0045, +0.0117].
+
+Udaipur: 101 disks, 165 views, 1065 annotated instances; PQ change +0.0115; paired 95\% bootstrap interval [+0.0064, +0.0170].
+
+\par\smallskip
+
+The baseline was selected before opening confirmation. The least aggressive contrast floor, 1.8, raised development PQ but created 37 complete misses, exceeding the predeclared cap of seven. We carried this rejected setting into confirmation and the site holdout as a fixed diagnostic. Removing a component can reduce split counts without connecting a filament; this challenger never adds pixels.
+
+\subsection{Thin, faint and near-limb instances}
+
+\begin{table}[h]\centering\small
+
+\caption{Confirmation match recall at instance IoU \(>0.5\).}
+
+\begin{tabular}{lrrr}
+
+\toprule
+
+Slice & Truth masks & Baseline & Contrast\\
+
+\midrule
+
+Thin & 209 & 27.3\% & 26.8\%\\
+
+Faint & 221 & 22.2\% & 18.1\%\\
+
+Near limb & 107 & 57.0\% & 50.5\%\\
+
+\bottomrule
+
+\end{tabular}
+
+\end{table}
+
+\input{discussion}
+
+\subsection{Inference and reproducibility}
+
+The selected export processed 180 supplied test images in 76.05 seconds on the RTX 4090, with 1.15 GiB peak process RAM and 1.11 GiB peak reserved GPU memory. It contains 1,293 predicted instances and 3 disks with no emitted rows. The 324,704-byte CSV fits the 10 MB form limit. The released notebook independently decodes the exact output and checks its SHA-256.
+
+\input{official}

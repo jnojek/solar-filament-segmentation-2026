@@ -1,0 +1,31 @@
+{
+  "channels": 24,
+  "epochs": 24,
+  "inference_batch": 8,
+  "inference_stride": 288,
+  "inference_tile": 384,
+  "learning_rate": 0.0007,
+  "min_area": 700,
+  "min_area_grid": [
+    40,
+    100,
+    220
+  ],
+  "positive_tile_fraction": 0.65,
+  "score_every": 4,
+  "screen_count": 24,
+  "seed": 271828,
+  "threshold": 0.65,
+  "threshold_grid": [
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7
+  ],
+  "tiles_per_observation": 5,
+  "train_batch": 12,
+  "train_tile": 384,
+  "weight_decay": 0.0001,
+  "workers": 6
+}

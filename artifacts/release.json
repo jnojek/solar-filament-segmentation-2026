@@ -1,0 +1,45 @@
+{
+  "artifact_sha256": {
+    "artifacts/data-identity.json": "b3d057b752a0697f2a78cf587fa45ddb8ea8b42a18554992f8892c486d4bf028",
+    "artifacts/model.pt": "a4ab9442cbf9b5e3570d5eec04e626587280fe82efec2e43feaa5be7b4aa16e9",
+    "artifacts/selected.json": "154a5552e7b03091fd85fdb415156cd6c45e2993a5c0df52541adb33758bcbf2",
+    "artifacts/split.json": "f760370a6694a1f5291f50d86c8cad934d82b2dfd4c91cb9ed9400d936f7cfb1",
+    "artifacts/test-files.sha256.json": "76ad238e60f87e9dd6a9b6e5c3495acf5289428fcdfe2a642337b7887078a6d8",
+    "artifacts/train-files.sha256.json": "fcb008ee854c39ef4bcde87f27b8f5b2b2de9c924b90c1097801d4c09ba7c5d3",
+    "qa/verify_entry.py": "e8553cd995b53b40d1b3481926aab88e17c75862f36f892e81a8722b836f2e06",
+    "requirements.txt": "b4db28cc752625975529e155c02ab3cfa6ddfc427f01ab80cc201d4c0a2e3a52",
+    "src/filament/__init__.py": "4e5ebb514f29302f01ec80111aa10c89b583f89283b479e5ac619531c4f09348",
+    "src/filament/__main__.py": "beb9871d8bff401e1e1daac34632de8b6efb8647372512620d945e75179b4506",
+    "src/filament/calibrate.py": "7d121b566357cbf82283df2d044b036b8dba4708ba5e0a3d9dcc297278511c25",
+    "src/filament/challenger.py": "11bea1d4f486364ac5a0b474f598c65e913abff380f4627653689d4f8d6b08f6",
+    "src/filament/data.py": "b303ce8a986cb266e4515f156a34c9d9825dfe10eb13398314d848e543208c13",
+    "src/filament/format.py": "7e44d10cf228cfd83e4a5296c00d83727d317893deacace34c83165c1d734c1e",
+    "src/filament/infer.py": "f10f2006bf39ec61c93a34ac6e27ec68f99bc1fea36f6873eac9a52cbca54755",
+    "src/filament/metrics.py": "d3f481643c263f09efeef1d1ecc984c370d3f6a9731efce3442a490064e2cc81",
+    "src/filament/model.py": "e728a321be922ae08744bbada8556a24286f1075292e687c455fe6640723ece1",
+    "src/filament/train.py": "fdde4bd7c9d88795c0a2471d5561a23b2b42e10a1f4b39babf852ec11969786b"
+  },
+  "candidate": "baseline-native-unet",
+  "checkpoint": "artifacts/model.pt",
+  "config": "artifacts/selected.json",
+  "coverage_sha256": "d57d94c107f6307eb9c99572ff6faf3f0f58bd3a055d6c76d804838641299bb7",
+  "device": "cuda",
+  "empty_observations": 3,
+  "environment": {
+    "device": "NVIDIA GeForce RTX 4090",
+    "python": "3.12.11",
+    "torch": "2.10.0+cu128"
+  },
+  "extra_inference_args": [],
+  "inference": {
+    "cuda_peak_allocated_bytes": 926613504,
+    "cuda_peak_reserved_bytes": 1186988032,
+    "elapsed_seconds": 76.05,
+    "ram_peak_bytes": 1235197952
+  },
+  "instances": 1293,
+  "observations": 180,
+  "submission_bytes": 324704,
+  "submission_sha256": "22f46dfefbc233ba1b5a033397f61225d7563af5c73b5d9c35628155e35536b4",
+  "test_manifest": "artifacts/test-files.sha256.json"
+}

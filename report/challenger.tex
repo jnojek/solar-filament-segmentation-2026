@@ -1,0 +1,10 @@
+\subsection{Challenger: disk-aware local contrast}
+We considered short-gap repair because GONG seeing and opacity variation can interrupt an otherwise coherent filament. The development audit found 298 predictions with zero overlap with the corresponding annotation view: 101 in the disk interior, 189 at projected radius \(0.8\) to \(0.95\,R\), two near the rim and six off disk. It found 73 meaningful splits but only six with a short, directionally supported gap. Only one of those had a fragment pair whose truth-informed union would recover a missed match. We therefore tested local contrast as the single challenger.
+
+For each disk we fit a circle to outward intensity drops along 180 radial rays. For each baseline instance we skeletonize the component, estimate width from its interior distance transform and sample an adjacent flank band. Flank pixels must lie within \(0.98\,R\) and outside any predicted foreground. With flank median \(m_f\), skeleton median \(m_s\) and flank median absolute deviation \(d_f\), the score is
+\[
+ c=\frac{m_f-m_s}{\max(2,\ 1.4826d_f)}.
+\]
+A component is retained unchanged if its score meets the contrast floor. We retain the baseline instance when the disk fit or local background is unreliable. The challenger changes neither network probabilities nor accepted mask boundaries. The floor is selected on development groups, keeping all other settings and inputs fixed.
+
+H-\(\alpha\) contrast is an observed intensity difference, not evidence of magnetic connectivity. Dark active-region structures can pass the filter, and genuine faint structures can fail it. GONG display JPEGs already suppress large-scale intensity variation; we use local flanks rather than fitting a global limb-darkening correction.

@@ -1,0 +1,2 @@
+# Preserve frozen artifact and source hashes across Windows and Linux checkouts.
+* -text
