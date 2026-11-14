@@ -67,5 +67,7 @@
   "submission_sha256": "dfd4405897c125d3a84e8319f687cbde41f15d9ee3332947a1a30fa97e8a5577",
   "test_manifest": "artifacts/test-files.sha256.json",
   "validation_note": "See paired shared-date-block transfer receipt and docs. Earlier campaign models and evaluations informed experiment choice.",
-  "kaggle_submission_status": "not_submitted"
+  "kaggle_submission_status": "complete",
+  "kaggle_submission_ref": "58324985",
+  "kaggle_public_pq": 0.29
 }
