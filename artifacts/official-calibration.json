@@ -1,0 +1,50 @@
+{
+  "competition": "filament-segmentation-2026",
+  "data": {
+    "independent_local_pq": null,
+    "training_disks": 707
+  },
+  "kaggle_submission": {
+    "accepted_utc": "2026-11-14T14:38:14.427000Z",
+    "displayed_public_pq": "0.32",
+    "observed_utc": "2026-11-14T15:31:20.703750+00:00",
+    "official_score_receipt_sha256": "79ba4370a331673ffc99198b2c52c1df27209e9498479a35d7b1ed16da1172ec",
+    "reference": "58346328",
+    "status": "COMPLETE"
+  },
+  "licenses": {
+    "details": "DETECTOR-LICENSE.md",
+    "detector_components_and_training_integration": "AGPL-3.0",
+    "independent_compact_unet_and_its_source": "MIT"
+  },
+  "prior_calibration": {
+    "displayed_public_pq": "0.31",
+    "reference": "58330929",
+    "training_disks": 419
+  },
+  "report": {
+    "build_receipt_sha256": "5f65d3b6ce3460ebc7d0dea3a1a2374df250daa420ba7c789dfa2506d33e00bd",
+    "distribution": "Organizer final form",
+    "filename": "solar-filament-all707-58346328.pdf",
+    "independent_review_sha256": "d07f2f83c449cf6625356bfda98b6bf14f79f50e73f5209592392f317457bb8d",
+    "pages": 4,
+    "pdf_bytes": 461233,
+    "pdf_sha256": "d488e15d055bf8d4e6202e825cf5386e54824215b01f2cbde9d4621a12a011f4"
+  },
+  "reproduction": {
+    "byte_identical_notebook_replay": true,
+    "fresh_cuda_training_repeated": false,
+    "independent_replay_receipt_sha256": "36f68a4e1ff7d3b68065c60636db4219db41d3ae302cc0b3b58e7bc4d1972573",
+    "independent_training_review_sha256": "7bb39f7c75db3b9b8479c290c4e33fa52ce397bad3c04eb75aa37e30dbe5d16c",
+    "release_manifest_sha256": "1358f727d3df6d7627781b44aa00bb2692ad33d4287ef3a0a232432bf55fb658",
+    "training_source_manifest_sha256": "4cdd8b35027d27093a6308fce5760222e28ea573819b9d460686ce928c3a0765"
+  },
+  "submission": {
+    "coverage_sha256": "6e71967b64b00e616c686a309c0d982090df40f93e0c26a92b284b7916d93a50",
+    "csv_bytes": 281064,
+    "csv_sha256": "70ff70f038ac010f494476d0c913f714d00bde7fb2d0b7f5b6221aebaf85467e",
+    "empty_observations": 3,
+    "masks": 1220,
+    "test_observations": 180
+  }
+}

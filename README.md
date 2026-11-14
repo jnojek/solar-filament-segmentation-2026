@@ -1,7 +1,21 @@
-# Solar filament instance segmentation
+# Solar Filament Segmentation
 
-An independently trained YOLO11s segmentation detector and native-resolution U-Net segment individual filaments in the Kaggle GONG H-alpha images. The frozen ownership rule and held-out comparison are in [the release manifest](artifacts/release.json) and [experiment notes](docs/detector-pivot.md). The release uses competition-supplied training images and annotations, scratch detector initialization, and test JPEGs at inference.
+This package reproduces the fixed all-label MAGFiLO deployment. The detector was trained from
+scratch for 36 epochs and continued for eight native-tile epochs. The compact U-Net used
+19 epochs. Both fits used all 707 competition training disks. Reproduce inference with
+the released final detector and U-Net without training or loading the annotations.
+See artifacts/release.json for the exact checkpoint identities and DETECTOR-LICENSE.md
+for attribution and licensing.
 
-To recreate the competition CSV, use the [pinned setup](docs/reproduction-notes.md) and run [the replay notebook](reproduce.ipynb) from the repository root. The notebook regenerates all predictions, checks native mask geometry and verifies the exact output hash.
+The release uses Python 3.12 and PyTorch 2.10.0+cu128. Install the matching CUDA build of
+PyTorch and TorchVision and the pinned dependencies in requirements.txt. The exact
+replay reference environment is an RTX 4090. GPU/software changes can alter numerics.
 
-See [detector licensing](DETECTOR-LICENSE.md) and the earlier [MIT license](LICENSE). Competition data and the organizer template retain their source terms.
+Extract the official supplied test JPEGs into a local folder. Open and run reproduce.ipynb,
+or set PYTHONPATH to this repository's src and run:
+
+    python -B -m filament.deployment_native --root . --images <test_images> --output <new_directory>
+
+submission.csv stores each instance as a native COCO RLE. Empty disks have no CSV row
+and appear explicitly in coverage.json. The notebook checks mask decoding and coverage
+against the exact supplied JPEG inventory.

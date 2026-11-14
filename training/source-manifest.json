@@ -1,0 +1,14 @@
+{
+  "original_inference_release_sha256": "1358f727d3df6d7627781b44aa00bb2692ad33d4287ef3a0a232432bf55fb658",
+  "training_replay_scope": "CPU rebuild exact for all 707 input selections/full labels and 6,363 derived native PNG and label bytes. Exact production effective settings and counts match. The fixed fit was not performed again.",
+  "training_source_sha256": {
+    "src/filament/metrics.py": "d3f481643c263f09efeef1d1ecc984c370d3f6a9731efce3442a490064e2cc81",
+    "src/filament/train.py": "fdde4bd7c9d88795c0a2471d5561a23b2b42e10a1f4b39babf852ec11969786b",
+    "training/README.md": "de7b5a0dff2f301ba9dcd8dd64b87dd1fe33995221a93609c6593ac23c3ef850",
+    "training/campaign-reproduction.json": "b62177acd92b2f39a0723e6fa799f12271243c901258d52ef201788aab9fd708",
+    "training/config.json": "74fe8bfbf99b475454ed9534d1e1c4cf45222c5367e8afb44f5c036bb0f5d626",
+    "training/detector.py": "70c705d73af00dea41aced29b94e8b87a4cd43c0948f4a93dfc1700ef9fbbb60",
+    "training/refit.py": "af8abf28211652740f0ae1e642318d28f2ce1f21fd117ceae39959a80e1593c2",
+    "training/train-files.sha256.json": "fcb008ee854c39ef4bcde87f27b8f5b2b2de9c924b90c1097801d4c09ba7c5d3"
+  }
+}

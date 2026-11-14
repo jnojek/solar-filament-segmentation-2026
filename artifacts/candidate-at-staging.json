@@ -1,0 +1,11 @@
+{
+  "calibration_ref": "58346328",
+  "coverage_sha256": "6e71967b64b00e616c686a309c0d982090df40f93e0c26a92b284b7916d93a50",
+  "official_calibration_csv_sha256": "70ff70f038ac010f494476d0c913f714d00bde7fb2d0b7f5b6221aebaf85467e",
+  "precalibration_report_sha256": "97f84127a549a6fa9fe5177541db087b0f3c039876e6a07b6dfffc065deef117",
+  "reference_inference_manifest_sha256": "1358f727d3df6d7627781b44aa00bb2692ad33d4287ef3a0a232432bf55fb658",
+  "report_submission_channel": "organizer final form",
+  "scored_csv_in_repository": false,
+  "status_at_staging": "accepted; official score pending",
+  "training_source_manifest_sha256": "4cdd8b35027d27093a6308fce5760222e28ea573819b9d460686ce928c3a0765"
+}

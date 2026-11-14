@@ -1,8 +1,0 @@
-{
-  "archive_bytes": 703574877,
-  "archive_sha256": "56d8cd2927859fa7df72bd28ad1586f53c5814df6f81db02e755223e430657df",
-  "data_manifest_sha256": "f91bfbc4f074d7ab3804b7cde4e4758bf47b53f09f45c0ca28c4ece321abb11f",
-  "files": 888,
-  "source": "Kaggle CLI: competitions download filament-segmentation-2026",
-  "unpacked_bytes": 750973628
-}

@@ -1,0 +1,45 @@
+{
+  "physical_training_disks": 707,
+  "detector_views": 707,
+  "detector_polygons": 5191,
+  "semantic_views": 1154,
+  "semantic_polygons": 8199,
+  "new_native_disks": 256,
+  "reused_native_disks": 451,
+  "training_native_tiles": 6363,
+  "seed": 271828,
+  "budgets": {
+    "scratch": {
+      "epochs": 36,
+      "batches_per_epoch": 177,
+      "optimizer_updates": 465,
+      "tail": 3,
+      "profile_batches": 48
+    },
+    "native": {
+      "epochs": 8,
+      "batches_per_epoch": 1591,
+      "optimizer_updates": 896,
+      "tail": 3,
+      "profile_batches": 48
+    },
+    "semantic": {
+      "epochs": 19,
+      "batches_per_epoch": 295,
+      "optimizer_updates": 5605,
+      "tail": 7,
+      "profile_batches": 24
+    }
+  },
+  "rule": {
+    "mode": "strict",
+    "confidence": 0.3,
+    "semantic_threshold": 0.65,
+    "dilation_px": 12,
+    "min_area": 150
+  },
+  "maximum_pair_minutes": 60,
+  "maximum_reserved_gpu_gib": 12,
+  "minimum_available_ram_gib": 12,
+  "maximum_workspace_gib": 25
+}
