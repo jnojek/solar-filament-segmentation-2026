@@ -89,6 +89,9 @@
     "total_ram_peak_bytes": 1408016384
   },
   "instances": 1251,
+  "kaggle_public_pq": 0.31,
+  "kaggle_submission_ref": "58330929",
+  "kaggle_submission_status": "complete",
   "observations": 180,
   "submission_bytes": 294416,
   "submission_sha256": "ee7f61a48a7ed89455da4c6cf4b35fbecff4fea61753c1fae0bb0b2aaa91d2bb",
