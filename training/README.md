@@ -1,39 +1,34 @@
-# Recreate the all-707 training recipe
+# Corresponding training source
 
-Use an extracted copy of the official MAGFiLO_1.0_Kaggle_2026 competition
-dataset. Use Python 3.12 and the pinned CUDA-enabled PyTorch and TorchVision
-versions listed in the inference release. Install the rest of the pinned
-requirements in requirements.txt. The original run used an RTX 4090 and six
-host workers with one native thread per worker.
+This recipe reconstructs the native YOLO11s-seg detector, three genuine inner
+out-of-fold detector donors, and the 512-pixel ResNet18 U-Net refiner. Use the
+official competition data and the pinned CUDA environment in the release,
+including segmentation-models-pytorch 0.5.0.
 
-From the release root, verify all training JPEGs and official COCO labels,
-reconstruct their exact view selection and inspect fixed budgets on CPU:
+From the repository root, use an unused directory on the data volume:
 
-    python -B training/refit.py --data <extracted_dataset_root> --output <unused_dry_run_dir> --dry-run
+    python -B training/refit.py --data <competition_dataset_root> --output <dry_run_dir> --dry-run
 
-The dry-run computes every PNG and label hash, writes derived labels and a
-local provenance receipt, and does not run a model or read test data. It
-requires roughly 200 MB of free disk for temporary label and proof files.
-For the full reproduction, use an unused output folder on the data volume,
-with at least 5 GiB free and 12 GiB available host RAM:
+The dry run verifies the 364 training IDs and dated inner groups. It computes
+every original image, chosen-view annotation, and native crop/label hash on
+CPU. It does not fit any checkpoint and requires no pretrained asset.
 
-    python -B training/refit.py --data <extracted_dataset_root> --output <unused_fit_dir>
+To train, obtain the official TorchVision ResNet18 ImageNet1K V1 initializer
+from https://download.pytorch.org/models/resnet18-f37072fd.pth . The expected
+SHA-256 is f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec
+and the expected size is 46,830,571 bytes. Use the audited local file:
 
-The launcher rebuilds the native pixels from the original 707 disks and
-hardlinks the original JPEGs. Startup may need Internet access for
-installing the pinned dependencies; model fitting uses local architecture
-configuration and requires no pretrained weights or downloaded images.
-Both detector stages use a fixed selected annotator view per physical disk.
-The U-Net uses original per-view mask averaging. The three stages run in separate processes and keep final
-scratch epoch 36, its own final native epoch 8 and compact U-Net epoch 19.
-Expected optimizer updates are 465, 896 and 5,605. Validation iteration,
-checkpoint selection by validation and early stopping are disabled. Use
-an unoccupied GPU for this standalone command.
+    python -B training/refit.py --data <competition_dataset_root> --output <fit_dir> --resnet18-imagenet <local_exact_pth>
 
-Each output stage has a training.json receipt. scratch and native keep
-engine/weights/last.pt; semantic keeps model.pt. Stock Ultralytics weight
-archives contain ordinary timestamp and path metadata, so retraining can
-produce different archive hashes. The included original release weights,
-inference notebook and 180-image replay are the byte-exact reference.
-All 707 labels contribute to fitting, so these checkpoints have no
-independent validation partition.
+A single process owns the GPU at a time; independent child processes run
+each donor from its own fresh scratch initialization. Have 12 GiB available
+host RAM and 5 GiB free disk for native tiles and fit artifacts. The job
+keeps the original 36 full-disk then eight native detector epochs, using
+only the final EMA from its own preceding stage. Donors produce training
+prompts only for their omitted dated groups. The mask model runs 24 epochs
+and saves just its final state. The released checkpoints remain the
+reference for exact inference replay. Retraining was not repeated as a
+byte-identical weight-archive test.
+
+Corresponding source license and attribution are in NOTICE and the license
+files at repository root. The original ImageNet checkpoint is excluded.

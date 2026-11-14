@@ -1,50 +1,88 @@
 {
   "competition": "filament-segmentation-2026",
-  "data": {
-    "independent_local_pq": null,
-    "training_disks": 707
-  },
   "kaggle_submission": {
-    "accepted_utc": "2026-11-14T14:38:14.427000Z",
-    "displayed_public_pq": "0.32",
-    "observed_utc": "2026-11-14T15:31:20.703750+00:00",
-    "official_score_receipt_sha256": "79ba4370a331673ffc99198b2c52c1df27209e9498479a35d7b1ed16da1172ec",
-    "reference": "58346328",
+    "accepted_utc": "2026-11-14T19:38:19.143000Z",
+    "displayed_public_pq": "0.36",
+    "observed_utc": "2026-11-14T19:44:09.754039+00:00",
+    "official_score_receipt_sha256": "23d55c7cf5e3d7034e4bd5517201c57698ca4820f665aa656aed71fdec60f045",
+    "reference": "58353757",
     "status": "COMPLETE"
   },
   "licenses": {
-    "details": "DETECTOR-LICENSE.md",
-    "detector_components_and_training_integration": "AGPL-3.0",
-    "independent_compact_unet_and_its_source": "MIT"
+    "details": "NOTICE",
+    "independent_compact_unet": "MIT",
+    "integrated_detector_refiner_and_training": "AGPL-3.0"
   },
   "prior_calibration": {
-    "displayed_public_pq": "0.31",
-    "reference": "58330929",
-    "training_disks": 419
+    "displayed_public_pq": "0.32",
+    "official_score_receipt_sha256": "79ba4370a331673ffc99198b2c52c1df27209e9498479a35d7b1ed16da1172ec",
+    "reference": "58346328",
+    "training_disks": 707
   },
   "report": {
-    "build_receipt_sha256": "5f65d3b6ce3460ebc7d0dea3a1a2374df250daa420ba7c789dfa2506d33e00bd",
+    "build_receipt_sha256": "90cf6ae8a919b9776f8c36de81dc0dd33e63ca7a42de9ccba70f7c1d314909eb",
     "distribution": "Organizer final form",
-    "filename": "solar-filament-all707-58346328.pdf",
-    "independent_review_sha256": "d07f2f83c449cf6625356bfda98b6bf14f79f50e73f5209592392f317457bb8d",
+    "filename": "solar-filament-r18-364-58353757.pdf",
+    "independent_review_sha256": "15c3b99b21bda347bd63fdea4b25e0d840ff25a9e7a60c49fdc709aa80eba396",
     "pages": 4,
-    "pdf_bytes": 461233,
-    "pdf_sha256": "d488e15d055bf8d4e6202e825cf5386e54824215b01f2cbde9d4621a12a011f4"
+    "pdf_bytes": 144882,
+    "pdf_sha256": "08b83d8d811bb8146f0eeaecf19b4b426455628dc36e90d19567b80162f38fdb"
   },
   "reproduction": {
     "byte_identical_notebook_replay": true,
-    "fresh_cuda_training_repeated": false,
-    "independent_replay_receipt_sha256": "36f68a4e1ff7d3b68065c60636db4219db41d3ae302cc0b3b58e7bc4d1972573",
-    "independent_training_review_sha256": "7bb39f7c75db3b9b8479c290c4e33fa52ce397bad3c04eb75aa37e30dbe5d16c",
-    "release_manifest_sha256": "1358f727d3df6d7627781b44aa00bb2692ad33d4287ef3a0a232432bf55fb658",
-    "training_source_manifest_sha256": "4cdd8b35027d27093a6308fce5760222e28ea573819b9d460686ce928c3a0765"
+    "clean_notebook_replay_seconds": 130.837,
+    "first_export_seconds": 123.964,
+    "independent_replay_receipt_sha256": "a53dfccc48631d3430b2b910b11a779799fb197fe11a7fb65c74795b825086c8",
+    "inference_checkpoint_sha256": {
+      "native": "e277986673ea22b5247b9222dc3ef978d6c77d05747e58072b730a83f45300fd",
+      "refiner": "1f0a2f19fd87cae35958a0a90328aef8f65d5c9e13a6bc8244b99894dcda8e0e"
+    },
+    "release_manifest_sha256": "d7fadb11a78c10f3b236fd8a402445ce790c98eab40351bf97ee9a729e0018d5",
+    "training_source_manifest_sha256": "3a30df39161e5051f0537b0689a449fea111bdb2cbbd063e73346b508a55813f"
   },
   "submission": {
-    "coverage_sha256": "6e71967b64b00e616c686a309c0d982090df40f93e0c26a92b284b7916d93a50",
-    "csv_bytes": 281064,
-    "csv_sha256": "70ff70f038ac010f494476d0c913f714d00bde7fb2d0b7f5b6221aebaf85467e",
+    "coverage_sha256": "8740ca05faeb7fa18a1f54c2ebec7a65c9e59a3f646a3d0b80033134e267979a",
+    "csv_bytes": 330588,
+    "csv_sha256": "fc6264ef4fe851b71a0796f0047653411e9c68b90eccdf25e66403c2b2237612",
     "empty_observations": 3,
-    "masks": 1220,
+    "mask_shape": [
+      2048,
+      2048
+    ],
+    "masks": 1260,
     "test_observations": 180
+  },
+  "validation": {
+    "development_disks": 32,
+    "development_pq": {
+      "refiner": 0.41709169371439886,
+      "strict": 0.3713723716748488
+    },
+    "development_receipt_sha256": "8790469cdd1c3e1d698905b68e025929527a009ded3c60e243b15a93849bb72c",
+    "fresh_confirmation_disks": 55,
+    "fresh_confirmation_pq": {
+      "refiner": 0.38274470100808317,
+      "strict": 0.30015271853467185
+    },
+    "fresh_paired_interval": {
+      "95pct_interval": [
+        0.04758614484144614,
+        0.11809285006249734
+      ],
+      "groups": 15,
+      "repetitions": 2000
+    },
+    "frozen_rule": "identity-0.30-0.30",
+    "previously_examined_disks": [
+      80,
+      101
+    ],
+    "previously_examined_pooled_pq": {
+      "refiner": 0.402127762334358,
+      "strict": 0.34741932715183477
+    },
+    "review_receipt_sha256": "5978b56910040da91795dc94df29124e67e2ebb3551e248f655e0f6043cd3174",
+    "training_disks_per_arm": 364,
+    "transfer_receipt_sha256": "993794e4b0d6e743581c2cc60899aa321d97fa2cdb8f4493ea1073599cb643a9"
   }
 }

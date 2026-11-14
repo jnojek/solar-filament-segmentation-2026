@@ -1,0 +1,19 @@
+{
+  "epochs": 24,
+  "seed": 104,
+  "batch": 16,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "precision": "torch CUDA FP16 autocast with GradScaler initialized at 1024",
+  "model": "SMP 0.5.0 U-Net ResNet18, two inputs, single logit, TorchVision ImageNet1K V1 locally loaded and two-channel stem",
+  "optimizer": "AdamW with gradient norm capped at 5.0 and epoch-wise cosine",
+  "loss": "FP32 BCE plus per-example soft Dice smooth 1",
+  "profile_batches": 24,
+  "profile_prediction_images": 4,
+  "fit_and_development_cap_minutes": 90,
+  "crop_geometry": "512 letterbox, 30 percent per-side padding minimum 32; Pillow bilinear image/probabilities and nearest labels/box mask",
+  "prompt_assignment": "top 40 regressed boxes at .10; best intersecting box per view by IoU >= .30 and full labeled target in padded crop; GT fallback; two maximum all-view-empty detector crop negatives",
+  "annotations": "one fixed seeded draw of a complete annotator view per disk per epoch, plus known empty OOF prompts",
+  "endpoint": "shared fresh364 detector; dev only preregistered 18 endpoint points; native largest component and min area150; canonical exclusive",
+  "comment": "Source-aligned refiner, not exact ArtDoctor detector/ensemble. Replays nearest exact resized masks at source threshold hypotheses. No fit, threshold, or hardware tune from reserve."
+}

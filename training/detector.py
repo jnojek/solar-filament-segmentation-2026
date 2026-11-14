@@ -1,4 +1,4 @@
-"""Fixed final-EMA, train-only all-707 detector fitting."""
+"""Train-only wrapper for the frozen Ultralytics scratch and native EMA recipes."""
 
 import hashlib
 import json
@@ -10,6 +10,10 @@ import torch
 
 import yolo11s_scratch as scratch
 import yolo11s_native_tiles as native
+
+
+class StopProfile(Exception):
+    pass
 
 
 class ForbiddenValidator:
@@ -33,7 +37,7 @@ def steps_expected(images, epochs, warmup_epochs):
     return n, updates
 
 
-def fit_detector(component, yaml_path, folder, parent_checkpoint, budget, device, timer):
+def fit_detector(component, yaml_path, folder, parent_checkpoint, budget, device, profile, timer):
     with patch.object(scratch, "RUN", folder.parent):
         YOLO, architecture = scratch.setup()
     from ultralytics.data import utils as data_utils
@@ -51,7 +55,7 @@ def fit_detector(component, yaml_path, folder, parent_checkpoint, budget, device
         raise ValueError("Selected detector recipe changed")
     settings["val"] = False  # Stock still calls validate() at final epoch, so override it explicitly.
     dataset_count = budget["batches_per_epoch"] * 4 - (4 - budget["tail"])
-    totals, schedule, epochs, proof = [], hashlib.sha256(), [], {}
+    totals, clock, schedule, epochs, proof = [], [], hashlib.sha256(), [], {}
     updates, best_calls, no_op_calls, tail_count = 0, 0, 0, 0
     gpu_start = timer()
     torch.manual_seed(settings["seed"])
@@ -79,7 +83,7 @@ def fit_detector(component, yaml_path, folder, parent_checkpoint, budget, device
         def preprocess_batch(self, batch):
             nonlocal tail_count
             ids = [str(x).replace("\\", "/").rsplit("/", 1)[-1] for x in batch["im_file"]]
-            if len(ids) == budget["tail"]:
+            if len(ids) == budget["tail"] and budget["tail"] < 4:
                 tail_count += 1
             totals.append(len(ids))
             schedule.update((" ".join(ids) + "\n").encode("ascii"))
@@ -105,6 +109,15 @@ def fit_detector(component, yaml_path, folder, parent_checkpoint, budget, device
             if not strip_optimizer(self.last):
                 raise ValueError("Could not strip the exact final EMA")
 
+    def batch_complete(trainer):
+        if profile:
+            torch.cuda.synchronize(device)
+            if not bool(torch.isfinite(trainer.loss).all()):
+                raise ValueError("Nonfinite detector profile loss")
+            clock.append(timer())
+            if len(clock) == budget["profile_batches"]:
+                raise StopProfile
+
     def epoch_complete(trainer):
         if not bool(torch.isfinite(trainer.loss).all()):
             raise ValueError("Nonfinite detector epoch")
@@ -120,17 +133,33 @@ def fit_detector(component, yaml_path, folder, parent_checkpoint, budget, device
         proof["init_classes"] = int(trainer.data["nc"])
         trainer.metrics = {}
 
+    model.add_callback("on_train_batch_end", batch_complete)
     model.add_callback("on_train_epoch_end", epoch_complete)
     model.add_callback("on_train_start", on_started)
     with patch.object(data_utils, "check_font", lambda *_: None):
-        model.train(trainer=AllFitTrainer, data=str(yaml_path), project=str(folder), name="engine",
-                    device=device.index, **settings)
+        try:
+            model.train(trainer=AllFitTrainer, data=str(yaml_path), project=str(folder), name="engine",
+                        device=device.index, **settings)
+        except StopProfile:
+            if not profile:
+                raise
     trainer = model.trainer
     checkpoint = folder / "engine/weights/last.pt"
     if trainer.validator.calls or best_calls or trainer.best.exists():
         raise ValueError("Validation or best-checkpoint side effects are prohibited")
-    if (len(epochs) != budget["epochs"] or len(totals) != budget["epochs"] * budget["batches_per_epoch"]
-          or updates != budget["optimizer_updates"] or tail_count != budget["epochs"]
+    if profile:
+        if len(clock) != budget["profile_batches"] or checkpoint.exists():
+            raise ValueError("Exact disposable detector profile schedule changed")
+        # A private scratch-profile EMA is for native profiling only and will
+        # never be accepted by the full native production guard.
+        if component == "scratch":
+            from copy import deepcopy
+
+            state = deepcopy(trainer.ema.ema).half().cpu()
+            proof_state = {"model": state, "train_args": vars(trainer.args)}
+            torch.save(proof_state, folder / "native-profile-parent.pt")
+    elif (len(epochs) != budget["epochs"] or len(totals) != budget["epochs"] * budget["batches_per_epoch"]
+          or updates != budget["optimizer_updates"] or tail_count != (budget["epochs"] if budget["tail"] < 4 else 0)
           or sum(totals) != dataset_count * budget["epochs"] or not checkpoint.is_file()):
         raise ValueError("Final EMA receipt does not match the frozen epoch and optimizer counts")
     return {"architecture": architecture, "checkpoint": checkpoint, "budgets": budget,
@@ -139,5 +168,6 @@ def fit_detector(component, yaml_path, folder, parent_checkpoint, budget, device
             "validated_samples": 0, "validator_calls": trainer.validator.calls,
             "constant_terminal_validation_hook_calls": no_op_calls, "best_checkpoint": False,
             "schedule_sha256": schedule.hexdigest(), "epoch_history": epochs,
-            **proof,
+            "mean_steady_seconds": float(np.mean(np.diff(clock)[6:])) if profile else None,
+            "profile_batch_seconds": np.diff(clock).tolist() if profile else None, **proof,
             "elapsed_internal_seconds": timer() - gpu_start}

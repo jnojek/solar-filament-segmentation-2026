@@ -1,14 +1,50 @@
-# Solar Filament Segmentation 2026 results
+# Kaggle result
 
-Kaggle submission **58346328** completed with **0.32 public Panoptic Quality (PQ)**, verified at 15:31 UTC on November 14, 2026. Submission 58330929 scored 0.31 public PQ using the earlier 419-disk fit. The final refit uses all 707 competition training disks and has no independent local holdout.
+The native YOLO11s detector and box-prompted ResNet18 U-Net scored **0.36
+public Panoptic Quality (PQ)** on November 14, 2026, at 19:44 UTC
+(Kaggle submission **58353757**). The previous all-data semantic-ownership
+pipeline scored 0.32 (58346328).
 
-The submitted CSV contains 1,220 instances across all 180 test images, including three images with no predicted instances. Export took 116.7 seconds on an RTX 4090. Independent notebook replay took 114.6 seconds and reproduced the CSV and coverage byte-for-byte.
+## Matched validation
 
-- CSV SHA-256: 70ff70f038ac010f494476d0c913f714d00bde7fb2d0b7f5b6221aebaf85467e
-- [Reproduce inference with the released checkpoints](reproduce.ipynb)
-- [Rebuild the training dataset and run the fixed training recipe](training/README.md)
-- [Official score and report identity](artifacts/official-calibration.json)
+Both local arms fit the same 364 competition H-alpha disks. Three separate
+grouped out-of-fold detectors supplied refiner crop prompts. The refiner used
+the regressed box, kept every crop at native placement and learned shape
+within that box. The deployed rule uses a 0.30 detector confidence floor,
+0.30 mask probability, 150-pixel minimum and fixed exclusive mask assembly.
+Crop inference runs with the same 0.20 input floor used during calibration.
 
-The training dry run reproduced every input selection and derived label, along with the exact bytes of all 6,363 native tiles. Fresh CUDA training was not repeated for the release check.
+| Split | Disks | Strict detector + semantic | Box-prompted refiner |
+|---|---:|---:|---:|
+| Development | 32 | 0.3714 | 0.4171 |
+| Fit-disjoint confirmation | 55 | 0.3002 | 0.3827 |
+| Previously examined folds combined | 181 | 0.3474 | 0.4021 |
 
-The YOLO detector, its trained weights, and the combined training entrypoints in training/refit.py and training/detector.py are covered by [AGPL-3.0](LICENSE-AGPL-3.0). The independent compact U-Net and its source retain the [MIT license](LICENSE). See [detector attribution](DETECTOR-LICENSE.md).
+The 55 confirmation disks were excluded from both final 364-disk fits and all
+out-of-fold donors. Earlier campaign checkpoints used these observations.
+The fit-disjoint confirmation gain was 0.0826 PQ, with a paired 95% bootstrap interval
+of [0.0476, 0.1181] over 15 observing-date blocks. The refiner matched 348 of
+681 reference instances, up from 275. Meaningful merges increased from 4 to 8,
+and unsupported masks increased from 48 to 56. The previously examined folds
+showed 141 additional matches, 126 fewer false positives, 30 meaningful merges
+(up from 5) and 324 unsupported masks (up from 306).
+
+## Reproduce the submitted output
+
+The [inference notebook](reproduce.ipynb) reads the supplied H-alpha images and
+loads the two released fitted checkpoints. Independent RTX 4090 execution
+reproduced the CSV and coverage byte-for-byte. The first export took 124 seconds
+and the notebook replay took 131 seconds. Native RLE validation covered 180
+disks of 2048 × 2048 pixels, with 1,260 masks and 3 empty disks.
+
+CSV SHA-256: `fc6264ef4fe851b71a0796f0047653411e9c68b90eccdf25e66403c2b2237612`.
+
+The [training guide](training/README.md) documents the grouped out-of-fold
+detector fits and refiner training. Checkpoint and score identities are in the
+[calibration receipt](artifacts/official-calibration.json). The four-page report
+is prepared for the organizer's separate final form.
+
+The integrated detector and refiner source, including training, is under
+AGPL-3.0. The independent compact U-Net source remains MIT. [NOTICE](NOTICE)
+credits the refiner source and records the TorchVision initialization and
+fitted-state provenance.
