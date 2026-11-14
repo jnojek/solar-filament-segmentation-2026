@@ -1,0 +1,15 @@
+{
+  "preparation_workers": 3,
+  "profile_fraction": 0.02,
+  "seam_margin_px": 4,
+  "native_mask_nms_iou": 0.5,
+  "training": {
+    "epochs": 8,
+    "lr0": 0.00025,
+    "degrees": 0.0,
+    "translate": 0.0,
+    "scale": 0.0,
+    "warmup_epochs": 0.5,
+    "warmup_bias_lr": 0.0
+  }
+}

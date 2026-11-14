@@ -1,21 +1,14 @@
-# Reproducing the combined refit and verifier
+# Reproducing the detector and native mask export
 
-Obtain the competition archive with official Kaggle tooling and place it at `data/MAGFiLO_1.0_Kaggle_2026/`. Use Python 3.12.11 and the checked-in Windows lock for the measured CUDA 12.8 reproduction:
+Use Python 3.12.11 and the Windows CUDA 12.8 package lock. Obtain the competition data through Kaggle and extract it to `data/MAGFiLO_1.0_Kaggle_2026/`. Open `reproduce.ipynb` from the checkout root and execute every cell. The notebook verifies the release file identities, regenerates detector proposals and the selected masks, then independently checks every expected image and the final CSV hash.
 
 ```powershell
 uv venv --python 3.12.11 .venv
-uv pip sync --python .venv\Scripts\python.exe --extra-index-url https://download.pytorch.org/whl/cu128 requirements-windows.lock
+uv pip sync --python .venv/Scripts/python.exe --extra-index-url https://download.pytorch.org/whl/cu128 requirements-windows.lock
 ```
 
-Run all cells in `reproduce.ipynb` from the checkout root. The direct Windows commands are:
+The exact GPU replay uses the shipped weights and no training labels. The two GPU stages run sequentially. Other software or hardware may change floating-point decisions near a threshold. See [the matched design](detector-pivot.md), [the earlier U-Net fit](refit-verifier-transfer.md) and the detector training receipt for lineage.
 
-```powershell
-$env:PYTHONPATH = 'src'
-$data = 'data/MAGFiLO_1.0_Kaggle_2026'
-.\.venv\Scripts\python.exe -m filament.small_proposal --config artifacts/selected.json --checkpoint artifacts/model.pt --verifier artifacts/small-proposal-selected.json --images "$data/test/test_images" --inventory artifacts/test-files.sha256.json --output output/refit-verifier/submission.csv --coverage output/refit-verifier/coverage.json --receipt output/refit-verifier/inference.json --device cuda
-.\.venv\Scripts\python.exe qa/verify_entry.py export --csv output/refit-verifier/submission.csv --coverage output/refit-verifier/coverage.json --images "$data/test/test_images" --inventory artifacts/test-files.sha256.json --output output/refit-verifier/qa.json
-```
+To retrain the detector, copy the byte-identical training source and configuration from `scripts/yolo11s_scratch.py` and `artifacts/detector-config.json` to `.local/yolo11s_scratch.py` and `.local/yolo11s-scratch-config.json`, respectively. Copy `artifacts/refit-split.json` to `runs/higher-data-refit-plan/split.json`. Set `PYTHONPATH=src` and run the script with the stages `prepare`, `profile` and `train` in order. The exact replay uses the archived trained checkpoint.
 
-Compare the CSV and coverage SHA-256 with `artifacts/release.json`. The exact byte match was verified on the RTX 4090 in the pinned environment. CPU and other CUDA or library builds may change decisions near a threshold. The frozen 419-image checkpoint and verifier are included. To retrain either component, use the [training lineage](refit-verifier-transfer.md). When refitting the verifier, point the map-generation commands at the independently rebuilt 336-image checkpoint, whose development predictions were out of its training set.
-
-The report in `report/`, if present, documents the original baseline experiment. The organizer-facing combined report is a separate four-page PDF, and its exact submission identity is recorded in the handoff materials.
+For the native continuation, copy the included native training script and native config to `.local/yolo11s_native_tiles.py` and `.local/yolo11s-native-tiles-config.json` and run its `prepare`, `profile` and `train` stages after rebuilding the full-disk scratch parent.
