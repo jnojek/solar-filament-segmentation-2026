@@ -3,23 +3,26 @@
     "NOTICE": "fc8c20c94c81572d61e416f855ceaf1d21503217cc3445afe3cc188e28773a67",
     "src/filament/metrics.py": "d3f481643c263f09efeef1d1ecc984c370d3f6a9731efce3442a490064e2cc81",
     "src/filament/train.py": "fdde4bd7c9d88795c0a2471d5561a23b2b42e10a1f4b39babf852ec11969786b",
-    "training/README.md": "7cc928c3a51d78727ca7e43a26a62da9a8d440f338a435d14da569acfc949fbc",
+    "training/README.md": "1e47f6c320be84844b3600911578e68208aa26bde781db3d681c01ff2cf47228",
     "training/detector.py": "78cf8b6bf03dd37fb7c33237c9737ed9ec182a62346d67735e0939b803b6be35",
-    "training/fitting-ids.json": "95cc443fd7eb67ff6370ec8a8aef29ecb7981dcbdb8979732bca256f19eed4d8",
+    "training/fitting-ids.json": "0f9be4a1098131c1db708d3ed4b3f87bd43fa86f6685758d9f5bbdcee74444ad",
     "training/refiner-config.json": "424984eb57c9e33e09786f7b69905938858bd011ab460855e4b32766d14ec7f0",
-    "training/refit.py": "0be7de4d8eb351b31c8e837f547c226b06d7b20e2aa16efa6c2d31fb566b2742",
+    "training/refit.py": "ecb1810e3884afdf2c86ac6c78ab595eb6fbc761f2cee85f9704a1d5b27770f8",
     "training/train-files.sha256.json": "fcb008ee854c39ef4bcde87f27b8f5b2b2de9c924b90c1097801d4c09ba7c5d3"
   },
   "oof_donors": [
-    242,
-    243,
-    243
+    470,
+    471,
+    471
   ],
+  "oof_embargo_hours": 48,
   "oof_inner_hold": [
-    122,
-    121,
-    121
+    236,
+    236,
+    235
   ],
-  "training_disk_count": 364,
-  "verification": "Standalone corresponding-source CPU preparation matches all 364 official detector view choices and all 3276 exact native tile and contour bytes; no training repeated."
+  "training_disk_count": 707,
+  "training_instances": 8199,
+  "training_views": 1154,
+  "verification": "Standalone CPU preparation matches all 707 image/annotator records and all 6363 native crop and contour hashes. No training repeated."
 }

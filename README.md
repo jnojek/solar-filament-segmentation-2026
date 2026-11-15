@@ -1,6 +1,6 @@
 # Solar Filament Segmentation
 
-This entry uses a native YOLO11s-seg detector trained on 364 competition disks
+This entry uses a native YOLO11s-seg detector trained on all 707 competition disks
 and a box-prompted U-Net refiner trained on the same disks. The refiner learns
 individual mask shapes from grouped out-of-fold detector proposals. At inference,
 the released model reads only the supplied H-alpha images.
@@ -22,3 +22,6 @@ compact U-Net source remains MIT. See NOTICE for full attribution, fitted-state
 provenance and donor terms, and training/README.md for corresponding source.
 TorchVision ImageNet1K V1 initialized the ResNet18 encoder for training. The
 original donor checkpoint is excluded. It is unnecessary for inference.
+
+This all-data deployment has no independent local PQ. The earlier paired
+364-disk fit supplies historical evidence for recipe selection.

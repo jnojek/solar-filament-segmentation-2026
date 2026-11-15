@@ -46,8 +46,8 @@ def candidate_masks(model, gray, proposals, rule):
 def predict(root, images, output):
     contract_path = root / "artifacts/release.json"
     cfg = read(contract_path)
-    if cfg["type"] != "r18_box_prompt_364_fit" or cfg["training_observations"] != 364:
-        raise ValueError("Expected the selected 364-fit refiner manifest")
+    if cfg["type"] != "r18_box_prompt_707_fit" or cfg["training_observations"] != 707:
+        raise ValueError("Expected the all-707 refiner deployment manifest")
     rule = checked_rule(cfg["rule"])
     for name, digest in cfg["artifact_sha256"].items():
         if file_sha256(root / name) != digest:

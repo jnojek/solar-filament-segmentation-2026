@@ -4,11 +4,11 @@
     "LICENSE": "76e666800a8c59b17152a00beb1b1cdbeb06897ec485417aad5ba02308868c03",
     "LICENSE-AGPL-3.0": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
     "NOTICE": "fc8c20c94c81572d61e416f855ceaf1d21503217cc3445afe3cc188e28773a67",
-    "README.md": "eedbcdb007171f5b551b0d262e669cc32a8502490c260c94abedf6ebec05c91d",
+    "README.md": "d8b8a68df02c4ce5601f3c7bb34883ef5e319ae5c676e2df17af9686692dff31",
     "artifacts/detector-config.json": "7742b17b6afbd4f5ebdd495a2a00a789f02fea33c7d829fc3d2d046a5182f3f9",
     "artifacts/detector-native-config.json": "646857d94b1dcf9e077972c94001f5b68edc4b87de9852a828d9e1b963c0346b",
-    "artifacts/detector.pt": "e277986673ea22b5247b9222dc3ef978d6c77d05747e58072b730a83f45300fd",
-    "artifacts/refiner.pt": "1f0a2f19fd87cae35958a0a90328aef8f65d5c9e13a6bc8244b99894dcda8e0e",
+    "artifacts/detector.pt": "c858fd8e5b4330e4492c863b2a9f15ca02d64c5e2a9e1975d443644d70f1a81a",
+    "artifacts/refiner.pt": "207895e77d0813ac541c565a88770dab840b1211906116bcdc9973b4d665ff4c",
     "artifacts/test-files.sha256.json": "76ad238e60f87e9dd6a9b6e5c3495acf5289428fcdfe2a642337b7887078a6d8",
     "qa/verify_entry.py": "e8553cd995b53b40d1b3481926aab88e17c75862f36f892e81a8722b836f2e06",
     "reproduce.ipynb": "0bc6494a0b6a8c5a25cd35497935d20683f69934488626ba6c0f38b4c958011f",
@@ -18,7 +18,7 @@
     "src/filament/__init__.py": "4e5ebb514f29302f01ec80111aa10c89b583f89283b479e5ac619531c4f09348",
     "src/filament/box_prompt_r18.py": "d33f1028516d9e2a68e120477f59c4445a306f6edbea5bf6abc67f48cea7c0c3",
     "src/filament/data.py": "b303ce8a986cb266e4515f156a34c9d9825dfe10eb13398314d848e543208c13",
-    "src/filament/deployment_box_refiner.py": "4ec958ad8965a7c87663c9b41d716da1c4c146243d8d0c0b8e9518464aca7c3c",
+    "src/filament/deployment_box_refiner.py": "13696fd2afdbd4c8bfcb4e6c18f3b7fcbba717b66351bb2aa2f972cbd5e9c37f",
     "src/filament/deployment_native.py": "f2180de085fa4527aad5981a083bfc15eb4efb760b7abc379cda22539f6e84fa",
     "src/filament/detector_native_predict.py": "cee45012068f929165f00e1eab59d7da1d47390ff6609553b1f005b0c5c56e61",
     "src/filament/detector_ownership.py": "c5db734547d8b043c3eed2c0ac0bcbfa3494567db57d2c398629139090186543",
@@ -29,20 +29,24 @@
     "src/filament/metrics.py": "d3f481643c263f09efeef1d1ecc984c370d3f6a9731efce3442a490064e2cc81",
     "src/filament/model.py": "e728a321be922ae08744bbada8556a24286f1075292e687c455fe6640723ece1",
     "src/filament/train.py": "fdde4bd7c9d88795c0a2471d5561a23b2b42e10a1f4b39babf852ec11969786b",
-    "training/README.md": "7cc928c3a51d78727ca7e43a26a62da9a8d440f338a435d14da569acfc949fbc",
+    "training/README.md": "1e47f6c320be84844b3600911578e68208aa26bde781db3d681c01ff2cf47228",
     "training/detector.py": "78cf8b6bf03dd37fb7c33237c9737ed9ec182a62346d67735e0939b803b6be35",
-    "training/fitting-ids.json": "95cc443fd7eb67ff6370ec8a8aef29ecb7981dcbdb8979732bca256f19eed4d8",
+    "training/fitting-ids.json": "0f9be4a1098131c1db708d3ed4b3f87bd43fa86f6685758d9f5bbdcee74444ad",
     "training/refiner-config.json": "424984eb57c9e33e09786f7b69905938858bd011ab460855e4b32766d14ec7f0",
-    "training/refit.py": "0be7de4d8eb351b31c8e837f547c226b06d7b20e2aa16efa6c2d31fb566b2742",
-    "training/source-manifest.json": "3a30df39161e5051f0537b0689a449fea111bdb2cbbd063e73346b508a55813f",
+    "training/refit.py": "ecb1810e3884afdf2c86ac6c78ab595eb6fbc761f2cee85f9704a1d5b27770f8",
+    "training/source-manifest.json": "edd4f82b7ccd378aff2f0d9c1298e9f371c647a301ea21d2c849cf59ed3ff38a",
     "training/train-files.sha256.json": "fcb008ee854c39ef4bcde87f27b8f5b2b2de9c924b90c1097801d4c09ba7c5d3"
   },
   "checkpoint_sha256": {
-    "native": "e277986673ea22b5247b9222dc3ef978d6c77d05747e58072b730a83f45300fd",
-    "refiner": "1f0a2f19fd87cae35958a0a90328aef8f65d5c9e13a6bc8244b99894dcda8e0e"
+    "native": "c858fd8e5b4330e4492c863b2a9f15ca02d64c5e2a9e1975d443644d70f1a81a",
+    "refiner": "207895e77d0813ac541c565a88770dab840b1211906116bcdc9973b4d665ff4c"
   },
   "experiment_refiner_source_sha256": "82bc4c1d04c732401110ed9c84f7f0c273040390359c6d06b428634a50baf479",
+  "final_refiner_batches": 9194,
+  "final_refiner_epochs": 24,
+  "final_refiner_samples": 146876,
   "generic_initialization_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+  "independent_local_pq": null,
   "model_yaml_sha256": "74628efbc4d94d81ee74fa9021da75d4c073b5012f8c287f4f5582154c44cffb",
   "packages": {
     "Pillow": "11.3.0",
@@ -62,11 +66,6 @@
   },
   "refiner_source_recipe": "ArtDoctor/solar-kaggle-public@ea487495ab55aa375fcc36eeb47adc701e79f60b",
   "release_source_difference": "Only a dated upstream attribution notice was prepended to the refiner module.",
-  "reserve_confirmation_observations": 55,
-  "reserve_delta_pq": {
-    "one_to_one": 0.08259198247341132,
-    "organizer": 0.08259198247341132
-  },
   "rule": {
     "confidence": 0.3,
     "flip_mode": "identity",
@@ -76,7 +75,10 @@
     "nms_iou": 0.5
   },
   "test_inventory_sha256": "76ad238e60f87e9dd6a9b6e5c3495acf5289428fcdfe2a642337b7887078a6d8",
-  "training_observations": 364,
-  "training_source_manifest_sha256": "3a30df39161e5051f0537b0689a449fea111bdb2cbbd063e73346b508a55813f",
-  "type": "r18_box_prompt_364_fit"
+  "training_annotation_views": 1154,
+  "training_annotations": 8199,
+  "training_observations": 707,
+  "training_source_manifest_sha256": "edd4f82b7ccd378aff2f0d9c1298e9f371c647a301ea21d2c849cf59ed3ff38a",
+  "type": "r18_box_prompt_707_fit",
+  "validation_scope": "Historical 364-fit recipe validation only. The final checkpoints fit every supplied training disk."
 }

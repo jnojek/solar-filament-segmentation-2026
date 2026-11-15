@@ -85,8 +85,8 @@ def membership():
     train = sorted(plan["train"])
     groups = plan["group_by_id"]
     seen = set()
-    if len(train) != 364 or set(train) != set(groups):
-        raise ValueError("Exact 364 fitting IDs required")
+    if len(train) != 707 or len(set(train)) != 707 or set(train) != set(groups):
+        raise ValueError("Exact 707 fitting IDs required")
     times = {s: datetime.strptime(s[:14], "%Y%m%d%H%M%S") for s in train}
     for index, fold in enumerate(plan["inner_folds"]):
         donor, held = set(fold["train"]), set(fold["oof"])
@@ -211,7 +211,8 @@ def infer_oof(data, output, group):
     target = output / group
     previous = read(target / "native/training.json")
     weights = Path(previous["checkpoint"])
-    if file_sha256(weights) != previous["checkpoint_sha256"] or previous["training_disks"] != len(fold["train"]):
+    if (file_sha256(weights) != previous["checkpoint_sha256"]
+            or previous["training_disks"] != len(fold["train"])):
         raise ValueError("Wrong inner donor checkpoint")
     with patch.object(scratch,"RUN",target/"inference"):
         YOLO, yaml_path = scratch.setup()
@@ -248,15 +249,16 @@ def fit_refiner(data, output, asset):
         rows = read(oof)
         receipt = read(donor/"predictions-oof-receipt.json")
         if (receipt["sha256"] != file_sha256(oof) or set(rows) != set(fold["oof"])
-                or set(rows) & set(prompts)):
+                or set(rows) & set(prompts)
+                or any("box_xyxy" not in row for predictions in rows.values() for row in predictions)):
             raise ValueError("Wrong or duplicated inner-held proposals")
         prompts.update(rows)
     plans = {}
     for stem in stems:
         positives, negatives = refiner.sample_plans(prompts[stem], views[stem], threshold=.10)
         plans[stem] = {"positive": [vars(x) for x in positives], "negative": [vars(x) for x in negatives]}
-    if len(by_view) != 603 or sum(len(row["positive"]) for row in plans.values()) != 4226:
-        raise ValueError("Exact fit 364 plans differ")
+    if len(by_view) != 1154 or sum(len(row["positive"]) for row in plans.values()) != 8199:
+        raise ValueError("Exact fit 707 plans differ")
     run = output/"refiner"
     run.mkdir()
     save_new_json(run/"crop-plans.json",plans)
